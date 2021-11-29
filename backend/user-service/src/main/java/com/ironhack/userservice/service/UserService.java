@@ -1,6 +1,7 @@
 package com.ironhack.userservice.service;
 
 import com.ironhack.userservice.models.User;
+import com.ironhack.userservice.proxys.CommentsProxy;
 import com.ironhack.userservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,8 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private CommentsProxy commentsProxy;
 
     public User findUserById(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
@@ -32,14 +35,17 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isPresent()) {
-            userRepository.delete(optionalUser.get());
-        } else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        deleteUserAndComments(optionalUser);
     }
 
     public void deleteUserByUsername(String username) {
         Optional<User> optionalUser = userRepository.findByUsername(username);
+        deleteUserAndComments(optionalUser);
+    }
+
+    private void deleteUserAndComments(Optional<User> optionalUser) {
         if (optionalUser.isPresent()) {
+            commentsProxy.deleteComments(optionalUser.get().getUsername());
             userRepository.delete(optionalUser.get());
         } else throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
