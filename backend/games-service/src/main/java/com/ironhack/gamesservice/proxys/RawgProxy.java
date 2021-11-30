@@ -5,8 +5,8 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient(url = "https://api.rawg.io/api/games")
-public interface rawgProxy {
+@FeignClient(name = "RAWG-API", url = "https://api.rawg.io/api/games")
+public interface RawgProxy {
 
     String API_KEY = "86f26c0874994ee69db0e0aaf0e82e70";
 

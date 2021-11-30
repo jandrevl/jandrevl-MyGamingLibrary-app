@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -17,10 +19,5 @@ public class Game {
     private String htmlDescription;
     private String releaseDate;
     private String backgroundImageUrl;
-    private String screenshot1Url;
-    private String screenshot2Url;
-    private String screenshot3Url;
-    private String screenshot4Url;
-    private String screenshot5Url;
-    private String screenshot6Url;
+    private List<String> screenshots;
 }
