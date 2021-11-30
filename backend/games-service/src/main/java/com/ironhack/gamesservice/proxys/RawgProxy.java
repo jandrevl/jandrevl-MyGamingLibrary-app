@@ -16,4 +16,7 @@ public interface RawgProxy {
     @GetMapping("/{id}/screenshots?key=" + API_KEY)
     String getGameScreenshots(@PathVariable(name = "id") Long id);
 
+    @GetMapping("?search={searchString}&search_exact=true&key=" + API_KEY)
+    String getStringSearch(@PathVariable(name = "searchString") String searchString);
+
 }

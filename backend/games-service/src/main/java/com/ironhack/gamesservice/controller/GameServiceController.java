@@ -1,6 +1,7 @@
 package com.ironhack.gamesservice.controller;
 
 
+import com.ironhack.gamesservice.models.Game;
 import com.ironhack.gamesservice.proxys.RawgProxy;
 import com.ironhack.gamesservice.service.GamesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class GameServiceController {
     @Autowired
     private GamesService gamesService;
 
-//    @GetMapping("/{id}")
-//    public String getGameDetailsJSONById(@PathVariable(name = "id") Long id) {
-//        return rawgProxy.getGameScreenshots(id);
-//    }
+    @GetMapping("/{id}")
+    public Game getGameById(@PathVariable(name = "id") Long id) {
+        return gamesService.getGame(id);
+    }
 
 }
