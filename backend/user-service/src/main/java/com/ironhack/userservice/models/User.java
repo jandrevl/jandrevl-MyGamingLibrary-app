@@ -5,6 +5,7 @@ import com.ironhack.userservice.enums.Platform;
 import com.ironhack.userservice.enums.Role;
 import com.ironhack.userservice.enums.Status;
 import com.ironhack.userservice.repository.UserRepository;
+import com.ironhack.userservice.utils.PasswordUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +46,7 @@ public class User {
     public User(String name, String username, String password, Platform favouritePlatform, Role role) {
         this.name = name;
         setUsername(username);
-        this.password = password;
+        setPassword(password);
         this.favouritePlatform = favouritePlatform;
         this.status = Status.ACTIVE;
         this.role=role;
@@ -61,4 +62,10 @@ public class User {
         }
         this.username = username;
     }
+
+    public void setPassword(String password) {
+        String encryptedPassword = PasswordUtil.encryptPassword(password);
+        this.password = encryptedPassword;
+    }
 }
+
