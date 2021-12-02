@@ -12,11 +12,11 @@ public class GatewayConfigFile {
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder) {
         return builder
                 .routes()
-                .route(p -> p.path("/games/**")
-                .uri("lb://GAMES-SERVICE"))
-                .route(p -> p.path("/users/**")
+                .route(p -> p.path("/api/games/**")
+                .uri("lb://games-service"))
+                .route(p -> p.path("/api/users/**")
                 .uri("lb://USER-SERVICE"))
-                .route(p -> p.path("/comments/**")
+                .route(p -> p.path("/api/comments/**")
                 .uri("lb://COMMENTS-SERVICE"))
                 .build();
     }
