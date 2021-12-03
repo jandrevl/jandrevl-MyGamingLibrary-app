@@ -42,4 +42,27 @@ public class GamesService {
 
         return game;
     }
+
+    public List<Game> searchByString(String searchString) {
+
+        List<Game> searchResultList = new ArrayList<>();
+
+        JSONObject searchResultJSON = new JSONObject(rawgProxy.getStringSearch(searchString));
+
+        JSONArray searchResultJSONArray = searchResultJSON.getJSONArray("results");
+
+        int numberOfResults;
+        if(searchResultJSONArray.length() > 10) {
+            numberOfResults = 10;
+        } else {
+            numberOfResults = searchResultJSONArray.length();
+        }
+
+        for (int i = 0; i < numberOfResults; i++) {
+            Long gameId = searchResultJSONArray.getJSONObject(i).getLong("id");
+            searchResultList.add(getGame(gameId));
+        }
+
+        return searchResultList;
+    }
 }
