@@ -22,7 +22,7 @@ public class CommentController {
         return commentRepository.findAll();
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public List<Comment> getUserComments(@PathVariable(name = "username") String username) {
         return commentRepository.findByUsername(username);
     }

@@ -27,7 +27,7 @@ public class UserController {
         return userService.findUserById(id);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/username/{username}")
     public User getUserByUsername(@PathVariable(name = "username") String username) {
         return userService.findUserByUsername(username);
     }
@@ -42,7 +42,7 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
-    @DeleteMapping("/{username}")
+    @DeleteMapping("/username/{username}")
     public void deleteUserByUsername(@PathVariable(name = "username") String username) {
         userService.deleteUserByUsername(username);
     }
@@ -52,7 +52,7 @@ public class UserController {
         userService.updateUserById(id, user);
     }
 
-    @PutMapping("/{username}")
+    @PutMapping("/username/{username}")
     public void updateUserByUsername(@PathVariable(name = "username") String username, @RequestBody User user) {
         userService.updateUserByUsername(username, user);
     }
