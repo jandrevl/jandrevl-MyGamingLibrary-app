@@ -34,6 +34,9 @@ public class UserController {
 
     @PostMapping("")
     public void createUser(@RequestBody User user) {
+        if(userRepository.findByUsername(user.getUsername()).isPresent()) {
+            throw new IllegalArgumentException("User Already Exists");
+        }
         userRepository.save(user);
     }
 

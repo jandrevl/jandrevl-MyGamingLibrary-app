@@ -29,4 +29,11 @@ public class CommentService {
         updatableComment.setComment(comment.getComment());
         commentRepository.save(updatableComment);
     }
+
+    public void deleteAllUserComments(String username) {
+        List<Comment> userComments = commentRepository.findByUsername(username);
+        for(Comment comment : userComments) {
+            commentRepository.delete(comment);
+        }
+    }
 }

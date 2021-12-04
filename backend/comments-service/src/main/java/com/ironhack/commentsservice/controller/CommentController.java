@@ -42,6 +42,11 @@ public class CommentController {
         commentRepository.delete(commentRepository.findById(id).get());
     }
 
+    @DeleteMapping("/username/{username}")
+    public void deleteUserComments(@PathVariable(name = "username") String username) {
+        commentService.deleteAllUserComments(username);
+    }
+
     @PutMapping("/{id}")
     public void updateComment(@PathVariable(name = "id") Long id, @RequestBody Comment comment) {
         commentService.updateCommentById(id, comment);
