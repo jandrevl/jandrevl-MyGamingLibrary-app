@@ -6,22 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-
-public class User {
+public class Game {
 
     private Long id;
     private String name;
-    private String username;
-    private String password;
-    private Status status;
-    private Platform favouritePlatform;
-    private Role role;
-
-
-
-
+    private String htmlDescription;
+    private String releaseDate;
+    private String backgroundImageUrl;
+    private List<String> screenshots;
 }

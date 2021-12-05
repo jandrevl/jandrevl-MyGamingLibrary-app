@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "COMMENTS-SERVICE")
 public interface CommentsProxy {
 
-    @DeleteMapping("/api/comments/{username}")
+    @DeleteMapping("/api/comments/username/{username}")
     void deleteComments(@PathVariable(name = "username") String username);
 }
