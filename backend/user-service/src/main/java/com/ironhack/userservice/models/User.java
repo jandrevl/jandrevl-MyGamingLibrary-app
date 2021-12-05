@@ -23,9 +23,9 @@ import java.util.List;
 @Entity
 public class User {
 
-    @Autowired
-    @Transient
-    private UserRepository userRepository;
+//    @Autowired
+//    @Transient
+//    private UserRepository userRepository;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,12 +54,12 @@ public class User {
     }
 
     public void setUsername(String username) {
-        List<User> userList = userRepository.findAll();
-        for (User user : userList) {
-            if (username == user.getUsername()) {
-                throw new IllegalArgumentException("Username already exists");
-            }
-        }
+//        List<User> userList = userRepository.findAll();
+//        for (User user : userList) {
+//            if (username == user.getUsername()) {
+//                throw new IllegalArgumentException("Username already exists");
+//            }
+//        }
         this.username = username;
     }
 
