@@ -1,3 +1,4 @@
+import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminZoneComponent } from './components/admin-zone/admin-zone.component';
 import { FavouriteGamesComponent } from './components/favourite-games/favourite-games.component';
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'signup',
+    component: SignupComponent
+  }
   
 ];
 

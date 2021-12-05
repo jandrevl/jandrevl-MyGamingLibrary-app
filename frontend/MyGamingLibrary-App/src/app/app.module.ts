@@ -14,6 +14,8 @@ import { FavouriteGamesComponent } from './components/favourite-games/favourite-
 import { AdminZoneComponent } from './components/admin-zone/admin-zone.component';
 import { LoginComponent } from './components/login/login.component';
 import {MatDividerModule} from '@angular/material/divider';
+import { SignupComponent } from './components/signup/signup.component';
+import { GameCardComponent } from './components/game-card/game-card.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {MatDividerModule} from '@angular/material/divider';
     GameSearchComponent,
     FavouriteGamesComponent,
     AdminZoneComponent,
-    LoginComponent
+    LoginComponent,
+    SignupComponent,
+    GameCardComponent
   ],
   imports: [
     BrowserModule,

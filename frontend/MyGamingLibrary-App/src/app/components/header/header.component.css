@@ -1,3 +1,19 @@
-* {
-    margin: 10px
+
+
+
+.app_name {
+    background-color: blueviolet;
+    height: 100%;
+    text-align: center;
+    padding: 15px;
+}
+
+.header-options {
+    margin: 10px;
+    color:honeydew;
+    text-decoration: none;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }

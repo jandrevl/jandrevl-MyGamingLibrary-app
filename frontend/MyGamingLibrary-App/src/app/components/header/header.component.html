@@ -1,12 +1,16 @@
 <mat-toolbar>
   <div>
-    <span>My Gaming Library</span>
+    <span class="app_name">My Gaming Library</span>
   </div>
-  <a routerLink="/" routerLinkActive="active">Home</a>
+  <a class="header-options" routerLink="/" routerLinkActive="active">Home</a>
   <mat-divider [vertical]="true"></mat-divider>
-  <a routerLink="/gamesearch" routerLinkActive="active">Search Game</a>
+  <a class="header-options" routerLink="/gamesearch" routerLinkActive="active">Search Game</a>
   <mat-divider [vertical]="true"></mat-divider>
-  <a routerLink="/favourites" routerLinkActive="active">Favourite Games</a>
+  <a class="header-options" routerLink="/favourites" routerLinkActive="active">Favourite Games</a>
   <mat-divider [vertical]="true"></mat-divider>
-  <a routerLink="/adminzone" routerLinkActive="active">Admin Zone</a>
+  <a class="header-options" routerLink="/adminzone" routerLinkActive="active">Admin Zone</a>
+  <span class="spacer"></span>
+  <a class="header-options" routerLink="/login" routerLinkActive="active">Login</a>
+  <mat-divider [vertical]="true"></mat-divider>
+  <a class="header-options" routerLink="/signup" routerLinkActive="active">Signup</a>
 </mat-toolbar>
