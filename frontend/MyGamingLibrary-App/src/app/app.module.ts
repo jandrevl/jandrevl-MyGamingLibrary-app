@@ -16,6 +16,8 @@ import { LoginComponent } from './components/login/login.component';
 import {MatDividerModule} from '@angular/material/divider';
 import { SignupComponent } from './components/signup/signup.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { GameCardComponent } from './components/game-card/game-card.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatTabsModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
