@@ -1,0 +1,21 @@
+.game-card {
+    width: 236px;
+    background-color: black;
+    align-items: center;
+    margin: 10px;
+    border-style: solid;
+    border-radius: 20px;
+    border-color:purple;
+    border-width: 5px;
+}
+
+.game-card-interior {
+    color:aliceblue;
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+h3 {
+    max-width: 236px;
+}

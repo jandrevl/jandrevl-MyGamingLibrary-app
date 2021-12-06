@@ -1,8 +1,8 @@
-<mat-toolbar>
+<mat-toolbar class="header">
   <div>
     <span class="app_name">My Gaming Library</span>
   </div>
-  <a class="header-options" routerLink="/" routerLinkActive="active">Home</a>
+  <a class="header-options" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
   <mat-divider [vertical]="true"></mat-divider>
   <a class="header-options" routerLink="/gamesearch" routerLinkActive="active">Search Game</a>
   <mat-divider [vertical]="true"></mat-divider>

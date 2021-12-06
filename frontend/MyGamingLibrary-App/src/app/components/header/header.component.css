@@ -1,8 +1,7 @@
 
 
-
 .app_name {
-    background-color: blueviolet;
+    background-color: purple;
     height: 100%;
     text-align: center;
     padding: 15px;
@@ -12,6 +11,14 @@
     margin: 10px;
     color:honeydew;
     text-decoration: none;
+}
+
+.header-options:hover {
+    background-color: dimgrey;
+}
+
+.active {
+    background-color: purple;
 }
 
 .spacer {
