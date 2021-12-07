@@ -7,15 +7,15 @@
   
 
    
-    <div class="random-games-body">
+    <div class="random-games-body" >
+      <app-game-card *ngFor="let randomGame of random8Games" [game]="randomGame"></app-game-card>
+      <!-- <app-game-card></app-game-card>
       <app-game-card></app-game-card>
       <app-game-card></app-game-card>
       <app-game-card></app-game-card>
       <app-game-card></app-game-card>
       <app-game-card></app-game-card>
-      <app-game-card></app-game-card>
-      <app-game-card></app-game-card>
-      <app-game-card></app-game-card>
+      <app-game-card></app-game-card> -->
     </div>
     <br>
   

@@ -85,3 +85,12 @@ export class User {
     }
 
 }
+
+export interface UserDTO {
+    favouritePlatform: Platform,
+    name: string,
+    password: string,
+    role: Role,
+    status: Status,
+    username: string
+}

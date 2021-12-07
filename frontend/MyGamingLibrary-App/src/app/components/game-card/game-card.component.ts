@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/app/models/game.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Game } from 'src/app/models/game.model';
 })
 export class GameCardComponent implements OnInit {
 
-  game: Game;
+  @Input() game: Game;
 
   constructor() {
     // Game object instantiated just for testing purposes

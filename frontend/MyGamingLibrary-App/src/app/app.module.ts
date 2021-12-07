@@ -17,6 +17,9 @@ import {MatDividerModule} from '@angular/material/divider';
 import { SignupComponent } from './components/signup/signup.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import {MatCardModule} from '@angular/material/card';
+import { GameDetailsComponent } from './components/game-details/game-details.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -30,7 +33,8 @@ import {MatCardModule} from '@angular/material/card';
     AdminZoneComponent,
     LoginComponent,
     SignupComponent,
-    GameCardComponent
+    GameCardComponent,
+    GameDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import {MatCardModule} from '@angular/material/card';
     MatToolbarModule,
     MatTabsModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
