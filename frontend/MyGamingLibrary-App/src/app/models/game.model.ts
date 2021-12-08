@@ -1,12 +1,18 @@
 export class Game {
+    
+    public set detail(value: string) {
+        this._detail = value;
+    }
 
     constructor(
+        
         private _id: number,
         private _name: string,
         private _htmlDescription: string,
         private _releaseDate: string,
         private _backgroundImageUrl: string,
-        private _screenshots: string[]
+        private _screenshots: string[],
+        private _detail?: string
     ) {}
 
     public get screenshots(): string[] {

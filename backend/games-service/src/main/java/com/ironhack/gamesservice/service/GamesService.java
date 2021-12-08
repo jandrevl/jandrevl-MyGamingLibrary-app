@@ -2,6 +2,7 @@ package com.ironhack.gamesservice.service;
 
 import com.ironhack.gamesservice.models.Game;
 import com.ironhack.gamesservice.proxys.RawgProxy;
+import feign.FeignException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,36 @@ public class GamesService {
 
     public Game getGame(Long id) {
         Game game = new Game();
-        String gameDetails = rawgProxy.getGameDetailsById(id);
-        JSONObject details = new JSONObject(gameDetails);
-        if (details.has("Detail")) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        String gameDetails;
+        JSONObject details;
+        int count = 0;
+        int maxTries = 1;
+        while(true) {
+            try {
+                gameDetails = rawgProxy.getGameDetailsById(id);
+                System.out.println(gameDetails);
+                break;
+            } catch (RuntimeException e) {
+                id = id++;
+                if (++count == maxTries) throw e;
+            }
         }
+        System.out.println(gameDetails);
+        details = new JSONObject(gameDetails);
+
         game.setId(id);
         game.setName(details.getString("name"));
         game.setHtmlDescription(details.getString("description"));
-        game.setReleaseDate(details.getString("released"));
-        game.setBackgroundImageUrl(details.getString("background_image"));
+        if(details.isNull("released")) {
+            game.setReleaseDate("Not available");
+        } else {
+            game.setReleaseDate(details.getString("released"));
+        }
+        if(details.isNull("background_image")) {
+            game.setBackgroundImageUrl("src/main/resources/images/image_not_available.png");
+        } else {
+            game.setBackgroundImageUrl(details.getString("background_image"));
+        }
 
         String gameScreenshots = rawgProxy.getGameScreenshots(id);
         List<String> screenshots = new ArrayList<>();

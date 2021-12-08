@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "RAWG-API", url = "https://api.rawg.io/api/games")
 public interface RawgProxy {
 
-    String API_KEY = "86f26c0874994ee69db0e0aaf0e82e70";
+//    String API_KEY = "86f26c0874994ee69db0e0aaf0e82e70";
+    String API_KEY = "f05f15b7d95f40b6b7f473441d25342b";
 
     @GetMapping("/{id}?key=" + API_KEY)
     String getGameDetailsById(@PathVariable(name = "id") Long id);

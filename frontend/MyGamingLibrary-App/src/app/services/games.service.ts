@@ -13,8 +13,8 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
-  getGameById(id: number): Observable<Game> {
-    return this.http.get<Game>(this.baseUrl + "/games/" + id);
+  getGameById(id: number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/games/" + id);
   }
 
 

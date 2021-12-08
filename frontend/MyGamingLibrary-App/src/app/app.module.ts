@@ -1,3 +1,4 @@
+import { MatOptionModule } from '@angular/material/core';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -20,6 +21,13 @@ import {MatCardModule} from '@angular/material/card';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UnmatchingPasswordsDialogComponent } from './components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
+import { UserCreatedDialogComponent } from './components/user-created-dialog/user-created-dialog.component';
 
 
 @NgModule({
@@ -34,7 +42,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     LoginComponent,
     SignupComponent,
     GameCardComponent,
-    GameDetailsComponent
+    GameDetailsComponent,
+    UnmatchingPasswordsDialogComponent,
+    UserCreatedDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +55,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDividerModule,
     MatCardModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

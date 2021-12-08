@@ -1,0 +1,17 @@
+/* * {
+    background-color:rgb(48, 44, 47);
+   
+} */
+
+.signupForm {
+    
+    background-color: rgb(46, 44, 44);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

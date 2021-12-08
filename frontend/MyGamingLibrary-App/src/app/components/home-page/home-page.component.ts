@@ -9,20 +9,19 @@ import { Game } from 'src/app/models/game.model';
 })
 export class HomePageComponent implements OnInit {
 
-  random8Games!: Game[]
+  random8GameId: number[] = [];
   game!: Game
+
+  answer!: any
+
+  invalidAnswer = { detail: "Not found."};
 
   constructor(private gamesService: GamesService) { }
 
   ngOnInit(): void {
     for(let i = 0; i < 8; i++) {
-      this.gamesService.getGameById(this.getRandomNumber())
-        .subscribe(
-          result => {
-            this.game = result;
-          }
-        );
-        this.random8Games.push(this.game)
+      this.random8GameId.push(this.getRandomNumber());
+      
     }
 
   }

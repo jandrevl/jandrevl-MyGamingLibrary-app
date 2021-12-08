@@ -1,1 +1,51 @@
-<p>signup works!</p>
+<div>
+    <span class="spacer"></span>
+  <form class="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name">
+      <mat-hint>min 8 characters</mat-hint>
+      <mat-error *ngIf="name.invalid">Name required minimum 8 char</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+      <mat-hint>min 8 characters</mat-hint>
+      <mat-error>Username required minimum 8 char</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-hint>min 8 characters</mat-hint>
+      <mat-error>Password required minimum 8 char</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Confirm Password</mat-label>
+      <input matInput type="password" formControlName="passwordConfirmation">
+      <mat-hint>min 8 characters</mat-hint>
+      <mat-error *ngIf="signupForm.hasError('samePassword')">Password required minimum
+        8 char</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Favourite Platform</mat-label>
+      <mat-select formControlName="favouritePlatform">
+        <mat-option *ngFor="let platform of Platform | keyvalue" value="{{platform.key}}">{{platform.value}}
+        </mat-option>
+      </mat-select>
+      <mat-error>Favourite Platform Required</mat-error>
+
+
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Submit New User</button>
+
+
+  </form>
+
+  <span class="spacer"></span>
+</div>
