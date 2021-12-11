@@ -1,5 +1,5 @@
 import { UserDTO } from './../models/user.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
@@ -24,8 +24,12 @@ export class UserService {
     return this.http.get<User[]>(this.baseUrl);
   }
 
-  getUserByUsername(username: string): Observable<User> {
+  getUserByUsername(username: string): Observable<any> {
     return this.http.get<User>(this.baseUrl + "/username/" + username);
+  }
+
+  getUserByUsernameOnLogin(username: string, headers: HttpHeaders): Observable<any> {
+    return this.http.get<any>(this.baseUrl + "/username/" + username, {headers});
   }
 
   createUser(userDTO: UserDTO): Observable<Object> {

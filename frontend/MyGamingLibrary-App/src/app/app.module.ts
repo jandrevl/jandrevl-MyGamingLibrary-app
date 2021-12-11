@@ -61,7 +61,8 @@ import { UserCreatedDialogComponent } from './components/user-created-dialog/use
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatOptionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
