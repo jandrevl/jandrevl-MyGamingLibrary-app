@@ -1,3 +1,5 @@
+import { GameDetailsComponent } from './components/game-details/game-details.component';
+import { AuthGuard } from './guards/auth.guard';
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { AdminZoneComponent } from './components/admin-zone/admin-zone.component';
@@ -22,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'adminzone',
-    component: AdminZoneComponent
+    component: AdminZoneComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'login',
@@ -31,6 +34,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupComponent
+  },
+  {
+    path: 'gamedetails',
+    component: GameDetailsComponent
   }
   
 ];

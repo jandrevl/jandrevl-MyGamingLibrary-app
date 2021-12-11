@@ -1,4 +1,8 @@
 
+.header {
+    display: flex;
+}
+
 
 .app_name {
     background-color: purple;
@@ -8,6 +12,7 @@
 }
 
 .header-options {
+    height: 100%;
     margin: 10px;
     color:honeydew;
     text-decoration: none;
@@ -23,4 +28,12 @@
 
 .spacer {
     flex: 1 1 auto;
+}
+
+a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 6px;
+    padding-right: 6px;
 }
