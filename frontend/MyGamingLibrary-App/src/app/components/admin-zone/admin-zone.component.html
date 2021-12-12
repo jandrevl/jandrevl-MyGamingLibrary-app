@@ -1,1 +1,25 @@
-<p>admin-zone works!</p>
+<div class="admin-zone">
+
+
+<div>
+    <h1>Admin Zone</h1>
+</div>
+
+<div>
+    <form (ngSubmit)="searchUsername()" #searchUserForm="ngForm">
+        <mat-form-field appearance="fill">
+            <mat-label>Search Username</mat-label>
+            <input matInput ngModel required type="text" name="searchUsername" #searchUsernameInput="ngModel">
+            <mat-hint>Username to search</mat-hint>
+            <mat-error *ngIf="searchUsernameInput.touched">Username required</mat-error>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="searchUserForm.invalid">Search User</button>
+    </form>
+    <h2 *ngIf="searchSubmitted"> User found {{user.id}} : {{user.name}}</h2>
+</div>
+
+<app-admin-user-details [user]="user"></app-admin-user-details>
+
+</div>
+

@@ -9,9 +9,9 @@ import { GamesService } from 'src/app/services/games.service';
 })
 export class GameCardComponent implements OnInit {
 
-  @Input() randomId!: number;
+  @Input() gameId!: number;
 
-  game: Game
+  @Input()game: Game
 
   obtained = {detail: "Notfound."}
 
@@ -31,15 +31,17 @@ export class GameCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let id = this.randomId;
-    do {
-    this.gamesService.getGameById(id)
+    // let id = this.gameId;
+    // do {
+      if (this.gameId) {
+    this.gamesService.getGameById(this.gameId)
       .subscribe(
         result => {
           this.game = result;
         });
-        id = id++;
-      } while (this.game.detail === "Not found.")
+      }
+      //   id = id++;
+      // } while (this.game.detail === "Not found.")
       
   }
 

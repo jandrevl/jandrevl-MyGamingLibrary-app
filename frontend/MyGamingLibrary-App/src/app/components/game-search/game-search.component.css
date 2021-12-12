@@ -1,0 +1,16 @@
+
+.searchSection {
+    background-color: rgb(58, 31, 58);
+    display: flex;
+}
+
+
+.resultsSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+mat-form-field {
+    width: 300px;
+}

@@ -43,15 +43,17 @@ public class User {
     private Role role;
 
 
-    public User(String name, String username, String password, Platform favouritePlatform, Role role) {
+    public User(String name, String username, String password, Platform favouritePlatform, Status status, Role role) {
         this.name = name;
         setUsername(username);
-        setPassword(password);
+        setPasswordWithEncryption(password);
         this.favouritePlatform = favouritePlatform;
-        this.status = Status.ACTIVE;
+        this.status = status;
         this.role=role;
 
     }
+
+
 
     public void setUsername(String username) {
 //        List<User> userList = userRepository.findAll();
@@ -63,9 +65,14 @@ public class User {
         this.username = username;
     }
 
-    public void setPassword(String password) {
+    public void setPasswordWithEncryption(String password) {
         String encryptedPassword = PasswordUtil.encryptPassword(password);
         this.password = encryptedPassword;
     }
+
+    public void setPasswordWithoutEncryption(String password) {
+        this.password = password;
+    }
+
 }
 

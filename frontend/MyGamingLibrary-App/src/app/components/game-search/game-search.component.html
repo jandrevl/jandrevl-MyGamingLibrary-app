@@ -1,6 +1,23 @@
-<div>
+<div class="searchSection">
+  <form (ngSubmit)="onSubmit()" #searchForm="ngForm">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Search Game Name</mat-label>
+      <input matInput ngModel required type="text" name="searchName" #searchNameInput="ngModel">
+      <mat-hint>Write the name of the game you want to search here</mat-hint>
+      <mat-error *ngIf="searchNameInput.touched">Search string required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="searchForm.invalid">Search</button>
 
 
+  </form>
+</div>
 
-    
+<div class="resultsSection">
+  <div  *ngFor="let game of searchResultGameArray">
+    <app-game-card *ngIf=(searchSubmitted) [game]="game"></app-game-card>
+  </div>
+
+
 </div>

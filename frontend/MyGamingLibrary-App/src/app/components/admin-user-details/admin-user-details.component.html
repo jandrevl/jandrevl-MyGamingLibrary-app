@@ -1,0 +1,57 @@
+<div>
+
+  <form [formGroup]="userDetailsForm" (ngSubmit)="submitUpdateUser()">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name">
+      <mat-hint>User's Name</mat-hint>
+      <mat-error>Name required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" formControlName="username">
+      <mat-hint>User's Username</mat-hint>
+      <mat-error>Username required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-hint>User's Password</mat-hint>
+      <mat-error>Min 8 Characters </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Favourite Platform</mat-label>
+      <mat-select formControlName="favouritePlatform">
+        <mat-option *ngFor="let platform of Platform | keyvalue" value="{{platform.key}}">{{platform.value}}
+        </mat-option>
+      </mat-select>
+      <mat-error>Favourite Platform Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let status of Status | keyvalue" value="{{status.key}}">{{status.value}}
+        </mat-option>
+      </mat-select>
+      <mat-error>Status Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option *ngFor="let role of Role | keyvalue" value="{{role.key}}">{{role.value}}
+        </mat-option>
+      </mat-select>
+      <mat-error>Role Required</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="userDetailsForm.invalid">Update User</button>
+
+  </form>
+
+</div>

@@ -40,6 +40,10 @@ export class UserService {
     return this.http.delete(this.baseUrl +"/username/" + username);
   }
 
+  updateUserByUsername(username: string, userDTO: UserDTO): Observable<any> {
+    return this.http.put(this.baseUrl + "/username/" + username, userDTO);
+  }
+
 
 
 }
