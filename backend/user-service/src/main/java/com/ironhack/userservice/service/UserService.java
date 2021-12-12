@@ -3,6 +3,7 @@ package com.ironhack.userservice.service;
 import com.ironhack.userservice.models.User;
 import com.ironhack.userservice.proxys.CommentsProxy;
 import com.ironhack.userservice.repository.UserRepository;
+import com.ironhack.userservice.utils.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -72,7 +73,9 @@ public class UserService {
         updatableUser.setUsername(user.getUsername());
         updatableUser.setName(user.getName());
         updatableUser.setFavouritePlatform(user.getFavouritePlatform());
-        updatableUser.setPassword(user.getPassword());
+        if(!updatableUser.getPassword().equals(user.getPassword())) {
+            updatableUser.setPasswordWithEncryption(user.getPassword());
+        }
         updatableUser.setStatus(user.getStatus());
         userRepository.save(updatableUser);
     }

@@ -19,7 +19,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
 import {MatCardModule} from '@angular/material/card';
 import { GameDetailsComponent } from './components/game-details/game-details.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -28,6 +28,9 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UnmatchingPasswordsDialogComponent } from './components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
 import { UserCreatedDialogComponent } from './components/user-created-dialog/user-created-dialog.component';
+import { AdminUserDetailsComponent } from './components/admin-user-details/admin-user-details.component';
+import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
 
 
 @NgModule({
@@ -44,7 +47,8 @@ import { UserCreatedDialogComponent } from './components/user-created-dialog/use
     GameCardComponent,
     GameDetailsComponent,
     UnmatchingPasswordsDialogComponent,
-    UserCreatedDialogComponent
+    UserCreatedDialogComponent,
+    AdminUserDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +68,10 @@ import { UserCreatedDialogComponent } from './components/user-created-dialog/use
     MatDialogModule,
     MatOptionModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

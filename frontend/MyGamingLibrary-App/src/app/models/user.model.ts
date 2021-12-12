@@ -41,6 +41,8 @@ export class User {
         private _role: Role
     ) {}
 
+    
+
     public get role(): Role {
         return this._role;
     }

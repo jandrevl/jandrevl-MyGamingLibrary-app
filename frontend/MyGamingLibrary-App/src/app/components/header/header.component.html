@@ -11,7 +11,7 @@
 
   <mat-divider [vertical]="true"></mat-divider>
 
-  <a class="header-options" routerLink="/favourites" routerLinkActive="active">Favourite Games</a>
+  <a *ngIf="isLoggedIn$ | async" class="header-options" routerLink="/favourites" routerLinkActive="active">Favourite Games</a>
 
   <mat-divider [vertical]="true"></mat-divider>
 
@@ -19,10 +19,10 @@
 
   <span class="spacer"></span>
 
-  <a class="header-options" routerLink="/login" routerLinkActive="active">Login</a>
+  <a *ngIf="!(isLoggedIn$ | async)" class="header-options" routerLink="/login" routerLinkActive="active">Login</a>
 
   <mat-divider [vertical]="true"></mat-divider>
 
-  <a class="header-options" routerLink="/signup" routerLinkActive="active">Signup</a>
+  <a *ngIf="!(isLoggedIn$ | async)" class="header-options" routerLink="/signup" routerLinkActive="active">Signup</a>
 
 </mat-toolbar>
