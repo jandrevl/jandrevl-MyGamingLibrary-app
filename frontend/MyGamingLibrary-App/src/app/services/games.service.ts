@@ -17,5 +17,9 @@ export class GamesService {
     return this.http.get<any>(this.baseUrl + "/games/" + id);
   }
 
+  getGamesBySearch(searchString: string): Observable<Game[]> {
+    return this.http.get<Game[]>(this.baseUrl + "/games/search/" + searchString);
+  }
+
 
 }
