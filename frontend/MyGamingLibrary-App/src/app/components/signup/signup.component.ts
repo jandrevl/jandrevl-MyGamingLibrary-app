@@ -6,6 +6,7 @@ import { Platform, Role, Status, UserDTO } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { UnmatchingPasswordsDialogComponent } from '../unmatching-passwords-dialog/unmatching-passwords-dialog.component';
 import { UserCreatedDialogComponent } from '../user-created-dialog/user-created-dialog.component';
+import { UserDuplicatedDialogComponent } from '../user-duplicated-dialog/user-duplicated-dialog.component';
 
 @Component({
   selector: 'app-signup',
@@ -19,7 +20,7 @@ export class SignupComponent implements OnInit {
   name: FormControl;
   password: FormControl;
   passwordConfirmation: FormControl;
-  username:FormControl;
+  username: FormControl;
   Platform = Platform;
 
 
@@ -35,18 +36,18 @@ export class SignupComponent implements OnInit {
 
     this.signupForm = new FormGroup(
       {
-      name: this.name,
-      password: this.password,
-      passwordConfirmation: this.passwordConfirmation,
-      username: this.username,
-      favouritePlatform: this.favouritePlatform
+        name: this.name,
+        password: this.password,
+        passwordConfirmation: this.passwordConfirmation,
+        username: this.username,
+        favouritePlatform: this.favouritePlatform
       });
 
 
-   }
+  }
 
   ngOnInit(): void {
-  
+
   }
 
   onSubmit(): void {
@@ -54,14 +55,20 @@ export class SignupComponent implements OnInit {
     console.log("confirmation: " + this.passwordConfirmation.value);
     if (this.password.value !== this.passwordConfirmation.value) {
       this.openUnmatchingPasswordsDialog();
-     
+
     } else {
       console.log("passwords match");
       let userDTO = this.createUserDTO();
-      this.userService.createUser(userDTO).subscribe(result => console.log(result));
-      this.openUserCreatedDialog();
+      this.userService.createUser(userDTO).subscribe(
+        result => {
+          console.log(result);
+          this.openUserCreatedDialog();
+        },
+        err => {
+          console.log("Something went wrong... Username already exists! " + err);
+          this.openDuplicatedUserDialog();
+        })
     }
-    
   }
 
   openUnmatchingPasswordsDialog() {
@@ -77,6 +84,10 @@ export class SignupComponent implements OnInit {
     this.name.setValue('');
     this.username.setValue('');
     this.favouritePlatform.setValue('');
+  }
+
+  openDuplicatedUserDialog() {
+    this.dialog.open(UserDuplicatedDialogComponent);
   }
 
   createUserDTO(): UserDTO {

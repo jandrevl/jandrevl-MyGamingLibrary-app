@@ -31,6 +31,7 @@ import { UserCreatedDialogComponent } from './components/user-created-dialog/use
 import { AdminUserDetailsComponent } from './components/admin-user-details/admin-user-details.component';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { UserDuplicatedDialogComponent } from './components/user-duplicated-dialog/user-duplicated-dialog.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
     GameDetailsComponent,
     UnmatchingPasswordsDialogComponent,
     UserCreatedDialogComponent,
-    AdminUserDetailsComponent
+    AdminUserDetailsComponent,
+    UserDuplicatedDialogComponent
   ],
   imports: [
     BrowserModule,

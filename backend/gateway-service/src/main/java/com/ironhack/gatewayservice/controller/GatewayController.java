@@ -41,7 +41,9 @@ public class GatewayController {
 
     @PostMapping("/api/users")
     public void createUser(@RequestBody User user) {
-        userProxy.createUser(user);
+        try {
+            userProxy.createUser(user);
+        } catch (IllegalArgumentException e)
     }
 
     @DeleteMapping("/api/users/{id}")
