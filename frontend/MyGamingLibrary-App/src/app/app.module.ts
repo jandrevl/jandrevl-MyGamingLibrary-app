@@ -32,6 +32,11 @@ import { AdminUserDetailsComponent } from './components/admin-user-details/admin
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
 import { UserDuplicatedDialogComponent } from './components/user-duplicated-dialog/user-duplicated-dialog.component';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { CommentCardComponent } from './components/comment-card/comment-card.component';
+import { PublishedCommentDialogComponent } from './components/published-comment-dialog/published-comment-dialog.component';
+import { FrozenUserDialogComponent } from './components/frozen-user-dialog/frozen-user-dialog.component';
 
 
 @NgModule({
@@ -50,7 +55,10 @@ import { UserDuplicatedDialogComponent } from './components/user-duplicated-dial
     UnmatchingPasswordsDialogComponent,
     UserCreatedDialogComponent,
     AdminUserDetailsComponent,
-    UserDuplicatedDialogComponent
+    UserDuplicatedDialogComponent,
+    CommentCardComponent,
+    PublishedCommentDialogComponent,
+    FrozenUserDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +76,9 @@ import { UserDuplicatedDialogComponent } from './components/user-duplicated-dial
     MatButtonModule,
     MatSelectModule,
     MatDialogModule,
-    MatOptionModule
+    MatOptionModule,
+    MatCarouselModule.forRoot(),
+    MatProgressSpinnerModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

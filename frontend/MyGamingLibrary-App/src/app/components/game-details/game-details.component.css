@@ -1,0 +1,33 @@
+
+.outer-game-details {
+    padding: 10px;
+    padding-bottom: 40px;
+    display: flex;
+    max-width: 100%;
+    max-height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(44, 33, 48);
+    color: white;
+}
+
+.game-details {
+    display: flex;
+    flex-direction: column;
+    max-width: 75%;
+    /* justify-items: center;
+    align-items: center; */
+    /* justify-content: center; */
+    align-content: center;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.comments-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+

@@ -1,1 +1,48 @@
-<p>game-details works!</p>
+<div class=outer-game-details>
+
+  <div class="game-details" *ngIf="game">
+
+    <h1>{{game.name}}</h1>
+
+    <img src="{{game.backgroundImageUrl}}" width="100%">
+    <br>
+
+    <h3><strong>Release date:</strong> {{game.releaseDate}}</h3>
+    <br>
+
+    <h3><strong>Description</strong></h3>
+    <br>
+    <div [innerHtml]="game.htmlDescription"></div>
+    <br>
+
+    <h3><strong>Screenshots</strong></h3>
+
+    <div>
+      <mat-carousel timings="250ms ease-in" [autoplay]="true" [interval]="5000" color="accent" maxWidth="75%"
+        [proportion]="65" [loop]="true" [hideArrows]="false" [hideIndicators]="false" [useKeyboard]="true"
+        [useMouseWheel]="false" orientation="ltr">
+        <mat-carousel-slide #matCarouselSlide *ngFor="let slide of screenshots" [image]="slide" overlayColor="#00000040"
+          [hideOverlay]="false"></mat-carousel-slide>
+      </mat-carousel>
+    </div>
+    <br>
+
+    <div class="submit-comment" *ngIf="isLoggedIn()">
+      <form (ngSubmit)="submitComment()" #commentForm="ngForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Your comment here</mat-label>
+          <textarea matInput rows="5" ngModel required type="text" name="commentText"
+            #commentTextInput="ngModel"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="commentForm.invalid">Submit Comment</button>
+      </form>
+    </div>
+    <br>
+    <div class="comments-section">
+    <app-comment-card *ngFor="let comment of (comments | async)?.reverse()" [gameComment]="comment"></app-comment-card>
+    </div>
+
+  </div>
+
+</div>

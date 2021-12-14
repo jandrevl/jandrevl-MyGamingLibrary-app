@@ -3,6 +3,7 @@ package com.ironhack.userservice.controller;
 import com.ironhack.userservice.models.User;
 import com.ironhack.userservice.repository.UserRepository;
 import com.ironhack.userservice.service.UserService;
+import com.ironhack.userservice.utils.PasswordUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,6 +38,7 @@ public class UserController {
         if(userRepository.findByUsername(user.getUsername()).isPresent()) {
             throw new IllegalArgumentException("User Already Exists");
         }
+        user.setPassword(PasswordUtil.encryptPassword(user.getPassword()));
         userRepository.save(user);
     }
 

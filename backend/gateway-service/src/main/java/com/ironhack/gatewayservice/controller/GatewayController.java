@@ -7,6 +7,7 @@ import com.ironhack.gatewayservice.models.User;
 import com.ironhack.gatewayservice.proxys.CommentsProxy;
 import com.ironhack.gatewayservice.proxys.GamesProxy;
 import com.ironhack.gatewayservice.proxys.UserProxy;
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,9 +42,7 @@ public class GatewayController {
 
     @PostMapping("/api/users")
     public void createUser(@RequestBody User user) {
-        try {
             userProxy.createUser(user);
-        } catch (IllegalArgumentException e)
     }
 
     @DeleteMapping("/api/users/{id}")

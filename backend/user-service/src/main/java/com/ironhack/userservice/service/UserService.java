@@ -73,10 +73,11 @@ public class UserService {
         updatableUser.setUsername(user.getUsername());
         updatableUser.setName(user.getName());
         updatableUser.setFavouritePlatform(user.getFavouritePlatform());
-        if(!updatableUser.getPassword().equals(user.getPassword())) {
-            updatableUser.setPasswordWithEncryption(user.getPassword());
+        if(!(updatableUser.getPassword().equals(user.getPassword()))) {
+            updatableUser.setPassword(PasswordUtil.encryptPassword(user.getPassword()));
         }
         updatableUser.setStatus(user.getStatus());
+        updatableUser.setRole(user.getRole());
         userRepository.save(updatableUser);
     }
 
