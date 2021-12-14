@@ -31,7 +31,7 @@
       <form (ngSubmit)="submitComment()" #commentForm="ngForm">
         <mat-form-field appearance="fill">
           <mat-label>Your comment here</mat-label>
-          <textarea matInput rows="10" ngModel required type="text" name="commentText"
+          <textarea matInput rows="5" ngModel required type="text" name="commentText"
             #commentTextInput="ngModel"></textarea>
         </mat-form-field>
         <br>
@@ -39,8 +39,9 @@
       </form>
     </div>
     <br>
-    <app-comment-card *ngFor="let comment of comments" [gameComment]="comment"></app-comment-card>
-
+    <div class="comments-section">
+    <app-comment-card *ngFor="let comment of (comments | async)?.reverse()" [gameComment]="comment"></app-comment-card>
+    </div>
 
   </div>
 
