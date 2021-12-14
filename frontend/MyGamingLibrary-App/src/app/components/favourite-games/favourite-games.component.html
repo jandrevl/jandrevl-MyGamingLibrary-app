@@ -1,1 +1,10 @@
-<p>favourite-games works!</p>
+<div>
+
+  <div class="favourites-hero-section">
+  </div>
+
+  <div class="favourit-games-collection">
+        <app-game-card *ngFor="let favouriteGame of favouriteGames | async" [gameId] = "favouriteGame.gameId"></app-game-card>
+  </div>
+
+</div>

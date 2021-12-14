@@ -2,9 +2,11 @@ package com.ironhack.gatewayservice.controller;
 
 
 import com.ironhack.gatewayservice.models.Comment;
+import com.ironhack.gatewayservice.models.FavouriteGame;
 import com.ironhack.gatewayservice.models.Game;
 import com.ironhack.gatewayservice.models.User;
 import com.ironhack.gatewayservice.proxys.CommentsProxy;
+import com.ironhack.gatewayservice.proxys.FavouriteGameProxy;
 import com.ironhack.gatewayservice.proxys.GamesProxy;
 import com.ironhack.gatewayservice.proxys.UserProxy;
 import org.apache.http.HttpStatus;
@@ -23,6 +25,8 @@ public class GatewayController {
     private CommentsProxy commentsProxy;
     @Autowired
     private GamesProxy gamesProxy;
+    @Autowired
+    private FavouriteGameProxy favouriteGameProxy;
 
 
     @GetMapping("/api/users/{id}")
@@ -109,6 +113,16 @@ public class GatewayController {
     @GetMapping("/api/games/search/{searchString}")
     public List<Game> searchGameByString(@PathVariable(name = "searchString") String searchString) {
         return gamesProxy.searchGameByString(searchString);
+    }
+
+    @GetMapping("/api/favouritegames/{username}")
+    public List<FavouriteGame> getFavouriteGamesByUsername(@PathVariable(name = "username") String username) {
+        return favouriteGameProxy.getFavouritesByUsername(username);
+    }
+
+    @PostMapping("/api/favouritegames")
+    public void addGameToFavourites(@RequestBody FavouriteGame favouriteGame) {
+        favouriteGameProxy.addGameToFavourites(favouriteGame);
     }
 
 

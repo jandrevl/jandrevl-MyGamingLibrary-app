@@ -1,3 +1,5 @@
+import { FavouriteGamesService } from './../../services/favourite-games.service';
+import { FavouriteGame, FavouriteGameDTO } from './../../models/favourite-game.model';
 import { MatDialog } from '@angular/material/dialog';
 import { CommentService } from './../../services/comment.service';
 import { AuthenticationService } from './../../services/authentication.service';
@@ -10,16 +12,18 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { GameComment, GameCommentDTO } from 'src/app/models/game-comment.model';
-import { PublishedCommentDialogComponent } from '../published-comment-dialog/published-comment-dialog.component';
 import { Status } from 'src/app/models/user.model';
-import { FrozenUserDialogComponent } from '../frozen-user-dialog/frozen-user-dialog.component';
+import { FrozenUserDialogComponent } from '../dialog-components/frozen-user-dialog/frozen-user-dialog.component';
+import { PublishedCommentDialogComponent } from '../dialog-components/published-comment-dialog/published-comment-dialog.component';
+import { AddedFavouritesDialogComponent } from '../dialog-components/added-favourites-dialog/added-favourites-dialog.component';
+import { GameAlreadyFavouriteDialogComponent } from '../dialog-components/game-already-favourite-dialog/game-already-favourite-dialog.component';
 
 @Component({
   selector: 'app-game-details',
   templateUrl: './game-details.component.html',
   styleUrls: ['./game-details.component.css']
 })
-export class GameDetailsComponent implements OnInit {
+export class GameDetailsComponent implements OnInit {   
 
   @ViewChild('commentForm')
   commentForm!: NgForm;
@@ -28,6 +32,9 @@ export class GameDetailsComponent implements OnInit {
   gameString: string = '';
   screenshots: string[];
   comments!: Observable<GameComment[]>
+  currentUser = JSON.parse(sessionStorage.getItem('currentUser')!);
+  userFavourites!: FavouriteGame[]
+
   
   
 
@@ -35,15 +42,12 @@ export class GameDetailsComponent implements OnInit {
     private router: Router,
     private gameDetailsAuxService: GameDetailsAuxService,
     private commentService: CommentService,
-    private dialog: MatDialog
-    // private changeDetection: ChangeDetectorRef
+    private dialog: MatDialog,
+    private favouriteGamesService: FavouriteGamesService
     
   ) {
     this.game = this.gameDetailsAuxService.game;
     this.screenshots = this.game.screenshots;
-    // this.commentService.getCommentsByGameId(this.game.id).subscribe(
-    //   result => {this.comments = result.slice().reverse()}
-    // )
    }
   
 
@@ -51,20 +55,26 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit() {
     console.log(this.game.name);
     console.log(this.game.detail);
-    // this.isLoggedIn$ = this.authenticationService.isLoggedIn;
     this.reloadCommentsList();
+    if (this.currentUser){
+    this.favouriteGamesService.getFavouriteGamesByUsername(this.currentUser.username).subscribe(
+      result => {
+        this.userFavourites = result
+      }
+    )
+    }
   }
 
   submitComment() {
-    let currentUser = JSON.parse(sessionStorage.getItem('currentUser')!);
-    if(currentUser.status === Status.FROZEN) {
+    
+    if(this.currentUser.status === Status.FROZEN) {
       this.dialog.open(FrozenUserDialogComponent)
       return;
     }
     
     let gameCommentDTO: GameCommentDTO = {
       gameId: this.game.id,
-      username: currentUser.username,
+      username: this.currentUser.username,
       date: new Date(),
       comment: this.commentForm.value.commentText
     }
@@ -74,15 +84,9 @@ export class GameDetailsComponent implements OnInit {
     })
     this.commentForm.reset();
     this.dialog.open(PublishedCommentDialogComponent);
-    // this.reloadCommentsList();
-    // this.changeDetection.detectChanges();
 
   }
 
-  // updateCommentsList(): void {
-  //   this.commentService.getCommentsByGameId(this.game.id).subscribe(
-  //     result => {this.comments = result.slice().reverse()})
-  // }
 
   reloadCommentsList() {
     this.comments = this.commentService.getCommentsByGameId(this.game.id);
@@ -91,6 +95,37 @@ export class GameDetailsComponent implements OnInit {
   isLoggedIn(): boolean {
     if(sessionStorage.getItem('currentUser')) { return true }
      return false;
+  }
+
+  addToFavourites() {
+    if(this.currentUser.status === Status.FROZEN) {
+      this.dialog.open(FrozenUserDialogComponent)
+      return;
+    }
+
+
+    for (let favourite of this.userFavourites) {
+      if(favourite.gameId === this.game.id)
+      this.dialog.open(GameAlreadyFavouriteDialogComponent, {
+        data: {gameName: this.game.name}
+      })
+      return;
+    }
+
+    let favouriteGameDTO: FavouriteGameDTO = {
+      gameId: this.game.id,
+      username:this.currentUser.username
+    }
+
+    this.favouriteGamesService.addToFavourites(favouriteGameDTO).subscribe(result => {
+      console.log(result);
+    });
+
+    this.dialog.open(AddedFavouritesDialogComponent, {
+      data: {gameName: this.game.name}
+    });
+
+
   }
 
   

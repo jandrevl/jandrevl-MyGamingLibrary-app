@@ -1,4 +1,4 @@
-<div>
+<div class="signup-page">
     <span class="spacer"></span>
   <form class="signupForm" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
 
@@ -38,8 +38,6 @@
         </mat-option>
       </mat-select>
       <mat-error>Favourite Platform Required</mat-error>
-
-
     </mat-form-field>
 
     <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Submit New User</button>

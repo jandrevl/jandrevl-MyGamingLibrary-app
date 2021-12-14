@@ -4,9 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CustomValidator } from 'src/app/validators/custom-validator';
 import { Platform, Role, Status, UserDTO } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
-import { UnmatchingPasswordsDialogComponent } from '../unmatching-passwords-dialog/unmatching-passwords-dialog.component';
-import { UserCreatedDialogComponent } from '../user-created-dialog/user-created-dialog.component';
-import { UserDuplicatedDialogComponent } from '../user-duplicated-dialog/user-duplicated-dialog.component';
+import { UserDuplicatedDialogComponent } from '../dialog-components/user-duplicated-dialog/user-duplicated-dialog.component';
+import { UnmatchingPasswordsDialogComponent } from '../dialog-components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
+import { UserCreatedDialogComponent } from '../dialog-components/user-created-dialog/user-created-dialog.component';
 
 @Component({
   selector: 'app-signup',
