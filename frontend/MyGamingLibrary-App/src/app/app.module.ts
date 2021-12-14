@@ -41,6 +41,8 @@ import { UnmatchingPasswordsDialogComponent } from './components/dialog-componen
 import { UserCreatedDialogComponent } from './components/dialog-components/user-created-dialog/user-created-dialog.component';
 import { PublishedCommentDialogComponent } from './components/dialog-components/published-comment-dialog/published-comment-dialog.component';
 import { FrozenUserDialogComponent } from './components/dialog-components/frozen-user-dialog/frozen-user-dialog.component';
+import { AddedFavouritesDialogComponent } from './components/dialog-components/added-favourites-dialog/added-favourites-dialog.component';
+import { GameAlreadyFavouriteDialogComponent } from './components/dialog-components/game-already-favourite-dialog/game-already-favourite-dialog.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { FrozenUserDialogComponent } from './components/dialog-components/frozen
     UserDuplicatedDialogComponent,
     CommentCardComponent,
     PublishedCommentDialogComponent,
-    FrozenUserDialogComponent
+    FrozenUserDialogComponent,
+    AddedFavouritesDialogComponent,
+    GameAlreadyFavouriteDialogComponent
   ],
   imports: [
     BrowserModule,

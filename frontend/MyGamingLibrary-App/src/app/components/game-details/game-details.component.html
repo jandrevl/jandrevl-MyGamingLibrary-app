@@ -4,7 +4,10 @@
 
     <h1>{{game.name}}</h1>
 
+    <div class="image-and-button">
     <img src="{{game.backgroundImageUrl}}" width="100%">
+    <button mat-raised-button color="primary" *ngIf="isLoggedIn()" (click)="addToFavourites()">Add to Your Favourite Games</button>
+    </div>
     <br>
 
     <h3><strong>Release date:</strong> {{game.releaseDate}}</h3>

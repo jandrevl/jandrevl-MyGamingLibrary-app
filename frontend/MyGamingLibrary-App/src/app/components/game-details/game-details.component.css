@@ -11,6 +11,25 @@
     color: white;
 }
 
+.image-and-button {
+    position:relative;
+    width: 100%;
+}
+
+.image-and-button img {
+    width: 100%;
+    height: auto;
+}
+
+.image-and-button button {
+    position: absolute;
+    bottom: 7%;
+    left: 5%;
+    min-width:20%;
+    max-width: fit-content;
+
+}
+
 .game-details {
     display: flex;
     flex-direction: column;
