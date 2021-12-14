@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { CommentService } from './../../services/comment.service';
 import { AuthenticationService } from './../../services/authentication.service';
 import { GameDetailsAuxService } from './../../services/game-details-aux.service';
@@ -9,6 +10,9 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { GameComment, GameCommentDTO } from 'src/app/models/game-comment.model';
+import { PublishedCommentDialogComponent } from '../published-comment-dialog/published-comment-dialog.component';
+import { Status } from 'src/app/models/user.model';
+import { FrozenUserDialogComponent } from '../frozen-user-dialog/frozen-user-dialog.component';
 
 @Component({
   selector: 'app-game-details',
@@ -31,6 +35,7 @@ export class GameDetailsComponent implements OnInit {
     private router: Router,
     private gameDetailsAuxService: GameDetailsAuxService,
     private commentService: CommentService,
+    private dialog: MatDialog
     // private changeDetection: ChangeDetectorRef
     
   ) {
@@ -52,6 +57,10 @@ export class GameDetailsComponent implements OnInit {
 
   submitComment() {
     let currentUser = JSON.parse(sessionStorage.getItem('currentUser')!);
+    if(currentUser.status === Status.FROZEN) {
+      this.dialog.open(FrozenUserDialogComponent)
+      return;
+    }
     
     let gameCommentDTO: GameCommentDTO = {
       gameId: this.game.id,
@@ -64,6 +73,7 @@ export class GameDetailsComponent implements OnInit {
       this.reloadCommentsList()
     })
     this.commentForm.reset();
+    this.dialog.open(PublishedCommentDialogComponent);
     // this.reloadCommentsList();
     // this.changeDetection.detectChanges();
 

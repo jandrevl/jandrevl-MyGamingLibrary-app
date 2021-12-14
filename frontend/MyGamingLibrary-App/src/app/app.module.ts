@@ -35,6 +35,8 @@ import { UserDuplicatedDialogComponent } from './components/user-duplicated-dial
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
+import { PublishedCommentDialogComponent } from './components/published-comment-dialog/published-comment-dialog.component';
+import { FrozenUserDialogComponent } from './components/frozen-user-dialog/frozen-user-dialog.component';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { CommentCardComponent } from './components/comment-card/comment-card.com
     UserCreatedDialogComponent,
     AdminUserDetailsComponent,
     UserDuplicatedDialogComponent,
-    CommentCardComponent
+    CommentCardComponent,
+    PublishedCommentDialogComponent,
+    FrozenUserDialogComponent
   ],
   imports: [
     BrowserModule,
