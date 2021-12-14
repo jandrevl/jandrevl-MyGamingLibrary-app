@@ -26,17 +26,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
-import { UnmatchingPasswordsDialogComponent } from './components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
-import { UserCreatedDialogComponent } from './components/user-created-dialog/user-created-dialog.component';
+// import { UnmatchingPasswordsDialogComponent } from './components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
+// import { UserCreatedDialogComponent } from './components/user-created-dialog/user-created-dialog.component';
 import { AdminUserDetailsComponent } from './components/admin-user-details/admin-user-details.component';
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
-import { UserDuplicatedDialogComponent } from './components/user-duplicated-dialog/user-duplicated-dialog.component';
+import { UserDuplicatedDialogComponent } from './components/dialog-components/user-duplicated-dialog/user-duplicated-dialog.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CommentCardComponent } from './components/comment-card/comment-card.component';
-import { PublishedCommentDialogComponent } from './components/published-comment-dialog/published-comment-dialog.component';
-import { FrozenUserDialogComponent } from './components/frozen-user-dialog/frozen-user-dialog.component';
+// import { PublishedCommentDialogComponent } from './components/published-comment-dialog/published-comment-dialog.component';
+// import { FrozenUserDialogComponent } from './components/frozen-user-dialog/frozen-user-dialog.component';
+import { UnmatchingPasswordsDialogComponent } from './components/dialog-components/unmatching-passwords-dialog/unmatching-passwords-dialog.component';
+import { UserCreatedDialogComponent } from './components/dialog-components/user-created-dialog/user-created-dialog.component';
+import { PublishedCommentDialogComponent } from './components/dialog-components/published-comment-dialog/published-comment-dialog.component';
+import { FrozenUserDialogComponent } from './components/dialog-components/frozen-user-dialog/frozen-user-dialog.component';
 
 
 @NgModule({

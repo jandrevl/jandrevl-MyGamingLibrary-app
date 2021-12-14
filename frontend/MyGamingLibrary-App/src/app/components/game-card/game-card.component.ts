@@ -35,8 +35,6 @@ export class GameCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // let id = this.gameId;
-    // do {
       if (this.gameId) {
     this.gamesService.getGameById(this.gameId)
       .subscribe(

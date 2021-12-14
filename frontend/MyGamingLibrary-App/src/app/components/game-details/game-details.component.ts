@@ -10,16 +10,16 @@ import { MatCarousel, MatCarouselComponent } from '@ngmodule/material-carousel';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
 import { GameComment, GameCommentDTO } from 'src/app/models/game-comment.model';
-import { PublishedCommentDialogComponent } from '../published-comment-dialog/published-comment-dialog.component';
 import { Status } from 'src/app/models/user.model';
-import { FrozenUserDialogComponent } from '../frozen-user-dialog/frozen-user-dialog.component';
+import { FrozenUserDialogComponent } from '../dialog-components/frozen-user-dialog/frozen-user-dialog.component';
+import { PublishedCommentDialogComponent } from '../dialog-components/published-comment-dialog/published-comment-dialog.component';
 
 @Component({
   selector: 'app-game-details',
   templateUrl: './game-details.component.html',
   styleUrls: ['./game-details.component.css']
 })
-export class GameDetailsComponent implements OnInit {
+export class GameDetailsComponent implements OnInit {   
 
   @ViewChild('commentForm')
   commentForm!: NgForm;
@@ -36,14 +36,10 @@ export class GameDetailsComponent implements OnInit {
     private gameDetailsAuxService: GameDetailsAuxService,
     private commentService: CommentService,
     private dialog: MatDialog
-    // private changeDetection: ChangeDetectorRef
     
   ) {
     this.game = this.gameDetailsAuxService.game;
     this.screenshots = this.game.screenshots;
-    // this.commentService.getCommentsByGameId(this.game.id).subscribe(
-    //   result => {this.comments = result.slice().reverse()}
-    // )
    }
   
 
@@ -51,7 +47,6 @@ export class GameDetailsComponent implements OnInit {
   ngOnInit() {
     console.log(this.game.name);
     console.log(this.game.detail);
-    // this.isLoggedIn$ = this.authenticationService.isLoggedIn;
     this.reloadCommentsList();
   }
 
@@ -74,15 +69,9 @@ export class GameDetailsComponent implements OnInit {
     })
     this.commentForm.reset();
     this.dialog.open(PublishedCommentDialogComponent);
-    // this.reloadCommentsList();
-    // this.changeDetection.detectChanges();
 
   }
 
-  // updateCommentsList(): void {
-  //   this.commentService.getCommentsByGameId(this.game.id).subscribe(
-  //     result => {this.comments = result.slice().reverse()})
-  // }
 
   reloadCommentsList() {
     this.comments = this.commentService.getCommentsByGameId(this.game.id);
