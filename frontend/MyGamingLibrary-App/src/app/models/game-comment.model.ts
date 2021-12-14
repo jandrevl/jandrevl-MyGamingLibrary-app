@@ -1,5 +1,5 @@
 
-export class Comment {
+export class GameComment {
     
     constructor (
         private _id: number,
@@ -40,6 +40,11 @@ export class Comment {
         this._id = value;
     }
 
+}
 
-
+export interface GameCommentDTO {
+    gameId: number,
+    username: string,
+    date: Date,
+    comment: string
 }

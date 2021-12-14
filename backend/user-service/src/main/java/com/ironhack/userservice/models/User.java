@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Setter
+//@Setter
 @Entity
 public class User {
 
@@ -46,7 +46,7 @@ public class User {
     public User(String name, String username, String password, Platform favouritePlatform, Status status, Role role) {
         this.name = name;
         setUsername(username);
-        setPasswordWithEncryption(password);
+        setPassword(password);
         this.favouritePlatform = favouritePlatform;
         this.status = status;
         this.role=role;
@@ -65,14 +65,30 @@ public class User {
         this.username = username;
     }
 
-    public void setPasswordWithEncryption(String password) {
-        String encryptedPassword = PasswordUtil.encryptPassword(password);
-        this.password = encryptedPassword;
-    }
-
-    public void setPasswordWithoutEncryption(String password) {
+    public void setPassword(String password) {
+//        String encryptedPassword = PasswordUtil.encryptPassword(password);
+//        this.password = encryptedPassword;
         this.password = password;
     }
 
+//    public void setPasswordWithoutEncryption(String password) {
+//        this.password = password;
+//    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setFavouritePlatform(@Nullable Platform favouritePlatform) {
+        this.favouritePlatform = favouritePlatform;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
 

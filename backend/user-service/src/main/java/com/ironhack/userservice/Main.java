@@ -5,7 +5,12 @@ import com.ironhack.userservice.utils.PasswordUtil;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(PasswordUtil.encryptPassword("password"));
+        String a = PasswordUtil.encryptPassword("password");
+        String b = a;
+
+        System.out.println(a.equals(b));
+
+
 
     }
 }

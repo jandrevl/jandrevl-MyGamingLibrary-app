@@ -60,7 +60,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .mvcMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("ADMIN")
                 .mvcMatchers(HttpMethod.DELETE, "/api/comments/**").hasRole("ADMIN")
                 .mvcMatchers(HttpMethod.PUT, "/api/users/**").hasAnyRole("ADMIN", "USER")
-                .mvcMatchers(HttpMethod.POST, "/api/comments/").hasAnyRole("ADMIN", "USER")
+                .mvcMatchers(HttpMethod.POST, "/api/comments").hasAnyRole("ADMIN", "USER")
                 .mvcMatchers(HttpMethod.PUT, "/api/comments/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().permitAll();
     }

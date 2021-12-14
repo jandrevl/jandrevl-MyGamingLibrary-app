@@ -1,14 +1,20 @@
 
 .header {
     display: flex;
+    height: 40px;
+    
 }
 
 
-.app_name {
+.app-name-div {
     background-color: purple;
     height: 100%;
-    text-align: center;
-    padding: 15px;
+    padding: 1px;
+    text-align: center; 
+}
+
+.app-name {
+    top: 50%;
 }
 
 .header-options {
