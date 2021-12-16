@@ -1,4 +1,4 @@
-<div>
+<div class="user-details-form">
 
   <form [formGroup]="userDetailsForm" (ngSubmit)="submitUpdateUser()">
 
@@ -50,8 +50,13 @@
       <mat-error>Role Required</mat-error>
     </mat-form-field>
 
+    <div>
     <button mat-raised-button color="primary" type="submit" [disabled]="userDetailsForm.invalid">Update User</button>
 
+    <button style="width: 20%" mat-raised-button color="warn" (click)="onClickDeleteUser()">DELETE USER</button>
+    </div>
+
   </form>
+
 
 </div>

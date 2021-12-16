@@ -1,7 +1,10 @@
+import { MatDialog } from '@angular/material/dialog';
 import { ChangeDetectionStrategy, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Platform, Role, Status, User, UserDTO } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
+import { DeleteUserDialogComponent } from '../dialog-components/delete-user-dialog/delete-user-dialog.component';
+import { UserDeletedDialogComponent } from '../dialog-components/user-deleted-dialog/user-deleted-dialog.component';
 
 @Component({
   selector: 'app-admin-user-details',
@@ -23,6 +26,7 @@ export class AdminUserDetailsComponent implements OnInit, OnChanges{
   Platform = Platform;
   Role = Role;
   Status = Status;
+  confirmDeleteUser: boolean = false;
 
 
 
@@ -30,6 +34,7 @@ export class AdminUserDetailsComponent implements OnInit, OnChanges{
 
   constructor(
     private userService: UserService,
+    public dialog: MatDialog,
   ) {
     // this.user = new User(0, 'teste', 'teste', '', Status.ACTIVE, Platform.OTHER, Role.USER);
 
@@ -103,6 +108,41 @@ export class AdminUserDetailsComponent implements OnInit, OnChanges{
     console.log("userDTO Created: " + JSON.stringify(userDTO))
 
     return userDTO;
+  }
+
+  onClickDeleteUser(): void {
+    this.confirmDeleteUser = false;
+    this.openConfirmDeleteDialog();
+    console.log("From admin user details: this.confirmDeleteUser is: " + this.confirmDeleteUser)
+
+    if (this.confirmDeleteUser){
+    
+    } else {return}
+  }
+
+  openConfirmDeleteDialog() {
+    const dialogRef = this.dialog.open(DeleteUserDialogComponent, {
+      data:{username: this.user.username,
+            confirmDelete: this.confirmDeleteUser}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.confirmDeleteUser = result.confirmDelete;
+      console.log(result);
+      console.log("from admin user details, after dialog, this.confirmdeleteduser is: " + this.confirmDeleteUser)
+      if(this.confirmDeleteUser) {
+        this.deleteUser();
+      }
+    })
+
+  }
+
+  deleteUser(): void {
+    this.userService.deleteUserByUsername(this.user.username).subscribe(
+      result => {
+        console.log(result);
+        this.dialog.open(UserDeletedDialogComponent);
+        this.userDetailsForm.reset();
+      })
   }
 
 }

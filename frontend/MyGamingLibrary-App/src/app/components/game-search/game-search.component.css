@@ -1,16 +1,40 @@
 
 .searchSection {
-    background-color: rgb(58, 31, 58);
-    display: flex;
+    background-color: rgb(19, 42, 71);
+    /* display: flex;
+    flex-direction: column; */
+    padding:2%;
+    width: 100%;
+    
+
 }
 
-
-.resultsSection {
+form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+button {
+    margin: 10px;
+    width: 50%
 }
 
 mat-form-field {
-    width: 300px;
+    width: 50%;
 }
+
+input {
+    color: white
+}
+
+.resultsSection {
+    background-image: url(src\assets\images\pexels-pixabay-159204.jpg);
+    height: 1400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+}
+

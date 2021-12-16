@@ -13,7 +13,7 @@ export class AdminZoneComponent implements OnInit {
   @ViewChild('searchUserForm')
   searchUserForm!: NgForm;
   searchSubmitted: boolean = false;
-  user: User;
+  user!: User;
   userId: number = 0;
   
 
@@ -23,7 +23,7 @@ export class AdminZoneComponent implements OnInit {
   constructor(
     private userService: UserService,
   ) { 
-    this.user = new User(0, 'nome do utilizador no Parent', '', '', Status.ACTIVE, Platform.OTHER, Role.USER);
+    // this.user = new User(0, '', '', '', Status.ACTIVE, Platform.OTHER, Role.USER);
   }
 
   ngOnInit(): void {

@@ -1,3 +1,16 @@
-* {
-    background-color: rgb(42, 34, 44);
+
+.user-details-form {
+    display: flex;
+    flex-direction: column;
+
+}
+
+mat-form-field {
+    margin: 5px;
+    width: 30%;
+}
+
+button {
+    margin: 10px;
+    min-width: 120px;
 }

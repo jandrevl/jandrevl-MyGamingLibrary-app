@@ -6,6 +6,11 @@
     background-size: cover; */
     height: 1000px;
     width: 100%;
+    background-image: url(src\assets\images\970954.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 }
 
 .page-title {
@@ -29,10 +34,7 @@
     /* text-align: justify; */
     width: 100%;
     height: 20%;
-    background-image: url(src\assets\images\970954.jpg);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    
     color: white;
 
 

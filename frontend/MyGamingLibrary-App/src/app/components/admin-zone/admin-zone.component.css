@@ -1,5 +1,9 @@
 .admin-zone {
-    background-color: rgb(61, 45, 63);
+    background-color: rgb(49, 49, 49);
     color: white;
     height: 1200px;
+}
+
+mat-form-field {
+    margin: 10px;
 }

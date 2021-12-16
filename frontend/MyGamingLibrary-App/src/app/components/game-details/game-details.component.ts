@@ -103,7 +103,6 @@ export class GameDetailsComponent implements OnInit {
       return;
     }
 
-
     for (let favourite of this.userFavourites) {
       if(favourite.gameId === this.game.id)
       this.dialog.open(GameAlreadyFavouriteDialogComponent, {

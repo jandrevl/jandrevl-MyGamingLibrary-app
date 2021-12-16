@@ -1,0 +1,6 @@
+<h1 mat-dialog-title>You are about to delete user {{data.username}}</h1>
+<div mat-dialog-content>This action is irreversible. Do you want to continue?</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">No</button>
+  <button mat-raised-button (click)="onYesClick()">Yes</button>
+</div>
