@@ -42,6 +42,7 @@ import { GameAlreadyFavouriteDialogComponent } from './components/dialog-compone
 import { DeleteUserDialogComponent } from './components/dialog-components/delete-user-dialog/delete-user-dialog.component';
 import { UserDeletedDialogComponent } from './components/dialog-components/user-deleted-dialog/user-deleted-dialog.component';
 import { UserNotFoundDialogComponent } from './components/dialog-components/user-not-found-dialog/user-not-found-dialog.component';
+import { LoginErrorDialogComponent } from './components/dialog-components/login-error-dialog/login-error-dialog.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { UserNotFoundDialogComponent } from './components/dialog-components/user
     GameAlreadyFavouriteDialogComponent,
     DeleteUserDialogComponent,
     UserDeletedDialogComponent,
-    UserNotFoundDialogComponent
+    UserNotFoundDialogComponent,
+    LoginErrorDialogComponent
   ],
   imports: [
     BrowserModule,

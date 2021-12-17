@@ -1,4 +1,34 @@
+.favourites-page {
+    background-image: url(src\assets\images\wallpaper2you_474481.jpg);
+    background-size: 2500px;
+    min-height:1000px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position-x: center;
+    
+}
+
+.favourites-page-filter {
+    background-color: rgba(4, 12, 54, 0.575);
+    height: 1000px;
+     
+}
+
+
 .favourites-hero-section {
+    color: white;
+    background-color:rgba(8, 19, 83, 0.918);
     width: 100%;
-    height: 20%;
+    height: auto 15%;
+    display: flex;
+    flex-direction: column;
+}
+
+.favourites-hero-section h1 {
+    padding-left:20px;
+}
+
+.favourite-games-collection {
+    display: flex;
+    flex-wrap: wrap;
 }

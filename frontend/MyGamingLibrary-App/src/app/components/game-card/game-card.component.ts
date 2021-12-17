@@ -50,6 +50,8 @@ export class GameCardComponent implements OnInit {
     this.router.navigate(['gamedetails']);
   }
 
+  
+
 
 
 }

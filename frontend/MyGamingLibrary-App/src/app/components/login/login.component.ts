@@ -22,8 +22,11 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.authenticationService.login(this.loginForm.value.username, this.loginForm.value.password);
-    this.loginForm.resetForm();
-    this.router.navigate(['/']);
+    console.log("from login component: user storage has: " + sessionStorage.getItem('currentUser'));
+    this.loginForm.reset();
+    // if (sessionStorage.getItem('currentUser')) {
+      this.router.navigate(['/']);
+    // }
     
 
   }

@@ -1,11 +1,17 @@
 <div class="homepage">
     <div class="hero-section">
+      <br>
         <h1>Welcome to</h1>
+        <br>
         <h1 class="page-title">My Gaming Library</h1>
-
+        <br><br>
+        <p style="font-size: 18px; text-align: center;">Find the games of your life. Add them to your favourites. Share your comments. Join the community!</p>
     </div>
-  
-
+  <br><br>
+    <div style="width: 100%; color: white; display: flex; flex-direction: column; align-items: center;">
+    <h1 style="font-size: 40px;">The Game Randomizer</h1>
+    <h1>Do you know these games?</h1>
+    </div>
     
     <div class="random-games-body" >
       <app-game-card *ngFor="let randomGame of random8GameId" [gameId]="randomGame"></app-game-card>

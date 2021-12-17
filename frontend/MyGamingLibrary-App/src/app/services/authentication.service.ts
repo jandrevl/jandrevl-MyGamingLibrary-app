@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject } from 'rxjs';
+import { DialogRole, MatDialog } from '@angular/material/dialog';
+import { LoginErrorDialogComponent } from '../components/dialog-components/login-error-dialog/login-error-dialog.component';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +19,8 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService
+    private userService: UserService,
+    private dialog: MatDialog,
     ) { }
 
 
@@ -31,8 +34,13 @@ export class AuthenticationService {
       }
       console.log(sessionStorage.getItem('currentUser'));
       let currentUser = JSON.parse(sessionStorage.getItem('currentUser')!)
-      console.log(currentUser.role);
+      console.log("from authentication service, current user role: " + currentUser.role);
       return user;
+    },
+    err => {
+      console.log("From authentication service, login incorrect" + err);
+      this.dialog.open(LoginErrorDialogComponent);
+      
     })
 
   }
