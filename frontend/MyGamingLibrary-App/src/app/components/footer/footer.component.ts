@@ -1,8 +1,9 @@
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../../services/authentication.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Subscription, Observable } from 'rxjs';
 import { map, take } from 'rxjs/operators';
+import { User } from 'src/app/models/user.model';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { map, take } from 'rxjs/operators';
 export class FooterComponent implements OnInit {
 
   isLoggedIn$!: Observable<boolean>
+  user!: User;
 
   
 
@@ -23,47 +25,20 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.authenticationService.isLoggedIn;
-
-
-  //   const obs = new Observable((observer) => {
-  //   observer.next(sessionStorage.getItem('currentUser'));
-  // })
-
-  //   obs.subscribe((val) => {
-  //     if (val !== null) {
-  //       this.visibility = true;
-  //     } else {this.visibility = false}
-  //   })
-
-    // sessionStorage.observe('currentUser').subscribe((newValue: boolean) => {
-    //   this.visibility = newValue
-    // })
-
-    // if (sessionStorage.getItem('currentUser')) {
-    //     this.visibility = true;
-    //   } else { this.visibility = false }
-  
   }
+
+  isCurrentUser(): boolean {
+    if(sessionStorage.getItem('currentUser')) {
+      this.user = JSON.parse(sessionStorage.getItem('currentUser')!)
+      return true;
+    } else return false;
+  }
+
+
 
   logout(): void {
     this.authenticationService.logout();
     this.router.navigate(['/']);
   }
-
-  // isVisible(visible: boolean): void {
-  //   this.visibility = visible;
-  // }
-
-  // isVisible(): Observable<boolean> {
-  //   return this.authenticationService.isLoggedIn
-  //     .pipe(
-  //       map((isLoggedIn: boolean) => {
-  //         if(!isLoggedIn) {
-  //           return false;
-  //         }
-  //         return true;
-  //       })
-  //     )
-  // }
 
 }

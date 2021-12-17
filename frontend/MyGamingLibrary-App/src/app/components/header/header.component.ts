@@ -23,12 +23,6 @@ export class HeaderComponent implements OnInit {
 
     this.isLoggedIn$ = this.authenticationService.isLoggedIn;
 
-    // if (sessionStorage.getItem('currentUser')) {
-    //   let currentUser = JSON.parse(sessionStorage.getItem('currentUser')!)
-    //   if (currentUser.role === "ADMIN") {
-    //     this.adminZoneVisibility = true;
-    //   }
-    // } else { this.adminZoneVisibility = false }
   }
 
   isUserAdmin(): boolean {

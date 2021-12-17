@@ -12,12 +12,22 @@
 
 
   </form>
+
+
+
 </div>
 
+
 <div class="resultsSection">
+
+
+
   <div  *ngFor="let game of searchResultGameArray">
-    <app-game-card *ngIf=(searchSubmitted) [game]="game"></app-game-card>
+    <app-game-card *ngIf="!downloading" [game]="game"></app-game-card>
   </div>
 
+<div *ngIf="downloading">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
 
 </div>

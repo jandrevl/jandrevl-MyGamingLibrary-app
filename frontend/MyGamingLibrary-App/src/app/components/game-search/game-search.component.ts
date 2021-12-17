@@ -13,6 +13,7 @@ export class GameSearchComponent implements OnInit {
   @ViewChild('searchForm')
   searchForm!: NgForm;
   searchSubmitted: boolean = false; 
+  downloading: boolean = false;
   searchResultGameArray: Game[] = [];
 
   constructor(
@@ -24,9 +25,13 @@ export class GameSearchComponent implements OnInit {
 
   onSubmit() {
     this.searchSubmitted = true;
-    this.gamesService.getGamesBySearch(this.searchForm.value.searchName).subscribe(result =>
-      {this.searchResultGameArray = result})
+    this.downloading = true;
+    this.gamesService.getGamesBySearch(this.searchForm.value.searchName).subscribe(result => {
+      this.downloading = false;
+      this.searchResultGameArray = result;
 
+      })
+      
   }
 
 }

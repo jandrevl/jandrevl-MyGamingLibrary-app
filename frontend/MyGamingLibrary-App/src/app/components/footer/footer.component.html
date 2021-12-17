@@ -1,6 +1,9 @@
 <div class="footer">
-    <!-- <span style="width: 2%"></span> -->
-    <a style="position: relative; left: 15px; color: white" href="https://rawg.io/apidocs"><h3>Powered by RAWG</h3></a>
-    <button style="position: relative; right: 30px" mat-raised-button *ngIf="isLoggedIn$ | async" color="accent" (click)="logout()">Logout</button>
-    
+  <a style="position: relative; left: 15px; color: white" href="https://rawg.io/apidocs">
+    <h3>Powered by RAWG</h3>
+  </a>
+  <div style="display: flex; position: relative; right: 30px">
+    <h2 style="color: white; margin:10px" *ngIf="isCurrentUser() && (isLoggedIn$ | async)">Welcome {{user.name}}</h2>
+    <button mat-raised-button *ngIf="isLoggedIn$ | async" color="accent" (click)="logout()">Logout</button>
+  </div>
 </div>

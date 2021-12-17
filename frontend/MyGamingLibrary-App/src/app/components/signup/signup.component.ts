@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -26,7 +27,8 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
     this.name = new FormControl('', [Validators.required, Validators.minLength(6)]);
     this.password = new FormControl('', [Validators.required, Validators.minLength(8)]);
@@ -84,6 +86,7 @@ export class SignupComponent implements OnInit {
     this.name.setValue('');
     this.username.setValue('');
     this.favouritePlatform.setValue('');
+    this.router.navigate(['/login'])
   }
 
   openDuplicatedUserDialog() {
