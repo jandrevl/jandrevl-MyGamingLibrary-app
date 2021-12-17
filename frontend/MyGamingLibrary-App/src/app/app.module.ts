@@ -43,6 +43,7 @@ import { DeleteUserDialogComponent } from './components/dialog-components/delete
 import { UserDeletedDialogComponent } from './components/dialog-components/user-deleted-dialog/user-deleted-dialog.component';
 import { UserNotFoundDialogComponent } from './components/dialog-components/user-not-found-dialog/user-not-found-dialog.component';
 import { LoginErrorDialogComponent } from './components/dialog-components/login-error-dialog/login-error-dialog.component';
+import { UserUpdatedDialogComponent } from './components/dialog-components/user-updated-dialog/user-updated-dialog.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { LoginErrorDialogComponent } from './components/dialog-components/login-
     DeleteUserDialogComponent,
     UserDeletedDialogComponent,
     UserNotFoundDialogComponent,
-    LoginErrorDialogComponent
+    LoginErrorDialogComponent,
+    UserUpdatedDialogComponent
   ],
   imports: [
     BrowserModule,

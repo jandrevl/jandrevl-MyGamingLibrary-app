@@ -5,6 +5,7 @@ import { Platform, Role, Status, User, UserDTO } from 'src/app/models/user.model
 import { UserService } from 'src/app/services/user.service';
 import { DeleteUserDialogComponent } from '../dialog-components/delete-user-dialog/delete-user-dialog.component';
 import { UserDeletedDialogComponent } from '../dialog-components/user-deleted-dialog/user-deleted-dialog.component';
+import { UserUpdatedDialogComponent } from '../dialog-components/user-updated-dialog/user-updated-dialog.component';
 
 @Component({
   selector: 'app-admin-user-details',
@@ -71,17 +72,6 @@ export class AdminUserDetailsComponent implements OnInit, OnChanges{
   }
 
   ngOnInit(): void {
-    // console.log("Mensagem do child: o User do Parent é: " + this.user.name);
-    // this.name = new FormControl(this.user.name, Validators.required);
-    // this.userDetailsForm.reset({name: this.user.name
-    //   name: this.user.name
-    //   username: this.user.username,
-    //   password: this.user.password,
-    //   favouritePlatform: this.user.favouritePlatform,
-    //   role: this.user.role,
-    //   status: this.user.status
-    // });
-    // console.log("this.userDetailsForm.value.name no child é agora: " + this.userDetailsForm.value.name);
     
   
   }
@@ -91,8 +81,9 @@ export class AdminUserDetailsComponent implements OnInit, OnChanges{
   submitUpdateUser():void {
     let userDTO: UserDTO = this.createUserDTO();
     this.userService.updateUserByUsername(this.user.username, userDTO).subscribe(result => {
-      console.log(result)
+      console.log(result);
     });
+    this.dialog.open(UserUpdatedDialogComponent);
 
   }
 

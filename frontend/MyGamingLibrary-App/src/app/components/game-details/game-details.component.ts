@@ -98,19 +98,22 @@ export class GameDetailsComponent implements OnInit {
   }
 
   addToFavourites() {
+    console.log("begin addToFavourites");
     if(this.currentUser.status === Status.FROZEN) {
       this.dialog.open(FrozenUserDialogComponent)
       return;
     }
 
+    console.log("user is not frozen")
     for (let favourite of this.userFavourites) {
-      if(favourite.gameId === this.game.id)
+      if(favourite.gameId === this.game.id) {
       this.dialog.open(GameAlreadyFavouriteDialogComponent, {
         data: {gameName: this.game.name}
-      })
+      });
       return;
     }
-
+  }
+    console.log("game is not in favourites already")
     let favouriteGameDTO: FavouriteGameDTO = {
       gameId: this.game.id,
       username:this.currentUser.username
